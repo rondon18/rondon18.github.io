@@ -1,0 +1,1645 @@
+	
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consultar registros</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/datatables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/all.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/colores.css"/>
+	<link rel="icon" type="img/png" href="../img/distintivo-LGPF.png">
+</head>
+<style media="screen">
+	.dataTables_paginate a {
+		color: #fff !important;
+		background-color: #0d6efd !important;
+		border-color: #0d6efd !important;
+		display: inline-block !important;
+		font-weight: 400 !important;
+		line-height: 1.5 !important;
+		text-align: center !important;
+		text-decoration: none !important;
+		vertical-align: middle !important;
+		cursor: pointer !important;
+		-webkit-user-select: none !important;
+		-moz-user-select: none !important;
+		user-select: none !important;
+		border: 1px solid transparent !important;
+		padding: 0.375rem 0.75rem !important;
+		font-size: 1rem !important;
+		border-radius: 0.25rem !important;
+		transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important;
+		margin: .25rem;
+	}
+</style>
+<body>
+	<!--Banner-->
+	<header class="w-100 bg-white d-flex justify-content-between shadow p-1 position-fixed top-0" style="z-index:1000;">
+		<div>
+			<img src="../img/banner-gobierno.png" alt=""  height="42" class="d-inline-block align-text-top">
+			<img src="../img/banner-MPPE.png" alt=""  height="42" class="d-inline-block align-text-top">
+		</div>
+		<img src="../img/banner-LGPF.png" alt=""  height="42" class="d-inline-block align-text-top">
+	</header>
+	<div style="width: 90%; margin: 60px auto;">
+		<div class="card my-2">
+			<section class="card-header">Consulta de registros</section>
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a id="link1" class="nav-link active" href="#" onclick="seccion('seccion1')">Consultar estudiantes</a>
+				</li>
+
+				<li class="nav-item">
+					<a id="link2" class="nav-link" href="#" onclick="seccion('seccion2')">Consultar representantes</a>
+				</li>
+										<li class="nav-item">
+						<a id="link3" class="nav-link" href="#" onclick="seccion('seccion3')">Consultar usuarios</a>
+					</li>
+					<li class="nav-item">
+						<a id="link4" class="nav-link" href="#" onclick="seccion('seccion4')">Consultar bitácora</a>
+					</li>
+								</ul>
+			<section class="card-body">
+				<div id="seccion1" class="card my-2">
+					<div class="card-header">
+						Estudiantes registrados
+					</div>
+					<div class="card-body">
+						<table id="estudiantes" class="table table-striped table-bordered table-sm w-100">
+							<thead>
+								<th>Cédula</th>
+								<th>Nombres</th>
+								<th>Apellidos</th>
+								<th>Fecha de nacimiento</th>
+								<th>Edad</th>
+								<th>Año a cursar</th>
+								<th>Género</th>
+								<th>Correo electrónico</th>
+								<th>Dirección de residencia</th>
+								<th>Talla de camisa</th>
+								<th>Talla de pantalón</th>
+								<th>Talla de zapatos</th>
+								<th>Estatura</th>
+								<th>Peso</th>
+								<th>Índice</th>
+								<th>Circ. Braquial</th>
+								<th>Acciones</th>
+							</thead>
+							<tbody>
+
+														<tr>
+									<td>V54138415</td>
+									<td style="min-width:210px;">Codi Fonsie</td>
+									<td style="min-width:210px;">Scallon Widocks</td>
+									<td>2007-12-01</td>
+									<td>14</td>
+									<td style="min-width:120px;">Cuarto año</td>
+									<td>Masculino</td>
+									<td style="min-width:160px;">cscallona@slashdot.org</td>
+									<td style="min-width:190px;">15213 Elmside Point
+</td>
+									<td>M</td>
+									<td>30</td>
+									<td>37</td>
+									<td>175cm</td>
+									<td>40kg</td>
+									<td>5135</td>
+									<td>25</td>
+									<td>
+										<!--Generar planilla de inscripción-->
+										<form action="../controladores/generar-planilla-estudiante.php" method="POST" style="display: inline-block;" target="_blank">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138415">
+											<input type="hidden" name="id_Estudiante" value="15">
+											<input type="hidden" name="id_representante" value="17">
+											<input type="hidden" name="id_padre" value="13">
+											<input type="hidden" name="id_madre" value="1">
+											<button class="btn btn-sm btn-danger" type="submit" name="Generar planilla">Generar planilla <i class="fas fa-file-pdf fa-lg ms-2"></i></button>
+										</form>
+										<form action="consultar-estudiante.php" method="post" style="display: inline-block;">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138415">
+											<input type="hidden" name="id_Estudiante" value="15">
+											<input type="hidden" name="id_representante" value="17">
+											<input type="hidden" name="id_padre" value="13">
+											<input type="hidden" name="id_madre" value="1">
+											<button class="btn btn-sm btn-primary" type="submit" name="Consultar">Consultar <i class="fas fa-magnifying-glass fa-lg ms-2"></i></button>
+										</form>
+										<form action="editar-estudiante/paso-1.php" method="post" style="display: inline-block;" target="_blank">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138415">
+											<input type="hidden" name="id_Estudiante" value="15">
+											<input type="hidden" name="id_representante" value="17">
+											<input type="hidden" name="id_padre" value="13">
+											<input type="hidden" name="id_madre" value="1">
+											<button class="btn btn-sm btn-primary" type="submit" name="Consultar">Editar <i class="fas fa-pen fa-lg ms-2"></i></button>
+										</form>
+																				<form action="../controladores/control-registros.php" method="post" style="display: inline-block;">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138415">
+											<button class="btn btn-sm btn-primary" type="submit" onclick="return confirmacion();" name="orden" value="Eliminar">Eliminar <i class="fas fa-trash-can fa-lg ms-2"></i></button>
+										</form>
+																			</td>
+								</tr>
+														<tr>
+									<td>V54138416</td>
+									<td style="min-width:210px;">Codiman Fonsie</td>
+									<td style="min-width:210px;">Scallon Widocks</td>
+									<td>2007-12-01</td>
+									<td>14</td>
+									<td style="min-width:120px;">Quinto año</td>
+									<td>Masculino</td>
+									<td style="min-width:160px;">cscallona@slashdot.org</td>
+									<td style="min-width:190px;">15213 Elmside Point
+</td>
+									<td>M</td>
+									<td>30</td>
+									<td>37</td>
+									<td>175cm</td>
+									<td>40kg</td>
+									<td>5135</td>
+									<td>25</td>
+									<td>
+										<!--Generar planilla de inscripción-->
+										<form action="../controladores/generar-planilla-estudiante.php" method="POST" style="display: inline-block;" target="_blank">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138416">
+											<input type="hidden" name="id_Estudiante" value="17">
+											<input type="hidden" name="id_representante" value="17">
+											<input type="hidden" name="id_padre" value="13">
+											<input type="hidden" name="id_madre" value="1">
+											<button class="btn btn-sm btn-danger" type="submit" name="Generar planilla">Generar planilla <i class="fas fa-file-pdf fa-lg ms-2"></i></button>
+										</form>
+										<form action="consultar-estudiante.php" method="post" style="display: inline-block;">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138416">
+											<input type="hidden" name="id_Estudiante" value="17">
+											<input type="hidden" name="id_representante" value="17">
+											<input type="hidden" name="id_padre" value="13">
+											<input type="hidden" name="id_madre" value="1">
+											<button class="btn btn-sm btn-primary" type="submit" name="Consultar">Consultar <i class="fas fa-magnifying-glass fa-lg ms-2"></i></button>
+										</form>
+										<form action="editar-estudiante/paso-1.php" method="post" style="display: inline-block;" target="_blank">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138416">
+											<input type="hidden" name="id_Estudiante" value="17">
+											<input type="hidden" name="id_representante" value="17">
+											<input type="hidden" name="id_padre" value="13">
+											<input type="hidden" name="id_madre" value="1">
+											<button class="btn btn-sm btn-primary" type="submit" name="Consultar">Editar <i class="fas fa-pen fa-lg ms-2"></i></button>
+										</form>
+																				<form action="../controladores/control-registros.php" method="post" style="display: inline-block;">
+											<input type="hidden" name="Cédula_Estudiante" value="V54138416">
+											<button class="btn btn-sm btn-primary" type="submit" onclick="return confirmacion();" name="orden" value="Eliminar">Eliminar <i class="fas fa-trash-can fa-lg ms-2"></i></button>
+										</form>
+																			</td>
+								</tr>
+														<tr>
+									<td>V27888000</td>
+									<td style="min-width:210px;">rrrrrrrrrrrrr ttttttttttttttt</td>
+									<td style="min-width:210px;">eeeeeeeeeeeeee tttttttttttt</td>
+									<td>2007-02-21</td>
+									<td>14</td>
+									<td style="min-width:120px;">Tercer año</td>
+									<td>Femenino</td>
+									<td style="min-width:160px;">tttttttt@hotmail.com</td>
+									<td style="min-width:190px;">zxnjkvbjzxjvn,jzxmcv</td>
+									<td>65</td>
+									<td>44</td>
+									<td>23</td>
+									<td>44cm</td>
+									<td>33kg</td>
+									<td>66</td>
+									<td>222</td>
+									<td>
+										<!--Generar planilla de inscripción-->
+										<form action="../controladores/generar-planilla-estudiante.php" method="POST" style="display: inline-block;" target="_blank">
+											<input type="hidden" name="Cédula_Estudiante" value="V27888000">
+											<input type="hidden" name="id_Estudiante" value="19">
+											<input type="hidden" name="id_representante" value="19">
+											<input type="hidden" name="id_padre" value="16">
+											<input type="hidden" name="id_madre" value="3">
+											<button class="btn btn-sm btn-danger" type="submit" name="Generar planilla">Generar planilla <i class="fas fa-file-pdf fa-lg ms-2"></i></button>
+										</form>
+										<form action="consultar-estudiante.php" method="post" style="display: inline-block;">
+											<input type="hidden" name="Cédula_Estudiante" value="V27888000">
+											<input type="hidden" name="id_Estudiante" value="19">
+											<input type="hidden" name="id_representante" value="19">
+											<input type="hidden" name="id_padre" value="16">
+											<input type="hidden" name="id_madre" value="3">
+											<button class="btn btn-sm btn-primary" type="submit" name="Consultar">Consultar <i class="fas fa-magnifying-glass fa-lg ms-2"></i></button>
+										</form>
+										<form action="editar-estudiante/paso-1.php" method="post" style="display: inline-block;" target="_blank">
+											<input type="hidden" name="Cédula_Estudiante" value="V27888000">
+											<input type="hidden" name="id_Estudiante" value="19">
+											<input type="hidden" name="id_representante" value="19">
+											<input type="hidden" name="id_padre" value="16">
+											<input type="hidden" name="id_madre" value="3">
+											<button class="btn btn-sm btn-primary" type="submit" name="Consultar">Editar <i class="fas fa-pen fa-lg ms-2"></i></button>
+										</form>
+																				<form action="../controladores/control-registros.php" method="post" style="display: inline-block;">
+											<input type="hidden" name="Cédula_Estudiante" value="V27888000">
+											<button class="btn btn-sm btn-primary" type="submit" onclick="return confirmacion();" name="orden" value="Eliminar">Eliminar <i class="fas fa-trash-can fa-lg ms-2"></i></button>
+										</form>
+																			</td>
+								</tr>
+													</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div id="seccion2" class="card my-2">
+					<div class="card-header">
+						Representantes registrados
+					</div>
+					<div class="card-body">
+							<table id="representantes" class="table table-striped table-bordered table-sm w-100">
+								<thead>
+									<th>Cédula</th>
+									<th>Nombres</th>
+									<th>Apellidos</th>
+									<th>Fecha de nacimiento</th>
+									<th>Lugar de nacimiento</th>
+									<th>Género</th>
+									<th>Correo Electrónico</th>
+									<th>Dirección</th>
+									<th>Estado civil</th>
+									<th>Grado de instrucción</th>
+								</thead>
+								<tbody>
+																	<tr>
+										<td>V27919566</td>
+										<td>Elber Alonso</td>
+										<td>Rondón Hernández</td>
+										<td>2001-05-05</td>
+										<td>Mérida</td>
+										<td>Masculino</td>
+										<td>earh_2001@outlook.com</td>
+										<td>La Pedregosa Alta</td>
+										<td>Casado(a)</td>
+										<td>Bachillerato</td>
+									</tr>
+																	<tr>
+										<td>V27555555</td>
+										<td>Alphonse Harlie</td>
+										<td>Stean Hernández</td>
+										<td>1995-11-01</td>
+										<td>28888 David Parkway</td>
+										<td>Masculino</td>
+										<td>ffetherstonhaugh0@microsoft.com</td>
+										<td>05 Menomonie Plaza</td>
+										<td>Soltero(a)</td>
+										<td>Primaria</td>
+									</tr>
+																	<tr>
+										<td>E45678912</td>
+										<td>Amalia Nerita</td>
+										<td>Venable Bygraves</td>
+										<td>1985-11-12</td>
+										<td>16817 Nevada Street</td>
+										<td>Femenino</td>
+										<td>nbygraves6@seesaa.net</td>
+										<td>16817 Nevada Street</td>
+										<td>Casado(a)</td>
+										<td>Bachillerato</td>
+									</tr>
+																	<tr>
+										<td>V13456324</td>
+										<td>Remolia Veneviento</td>
+										<td>Panini Blight</td>
+										<td>1982-02-23</td>
+										<td>San Petersburgo</td>
+										<td>Femenino</td>
+										<td>therollercoasterssucks@gmail.com</td>
+										<td>San Juan de Lagunillas</td>
+										<td>Viudo(a)</td>
+										<td>Universitario</td>
+									</tr>
+																	<tr>
+										<td>V15453234</td>
+										<td>Filomena Martina</td>
+										<td>Blanco Paredes</td>
+										<td>1996-08-08</td>
+										<td>Mérida</td>
+										<td>Femenino</td>
+										<td>richardismylove@gmail.com</td>
+										<td>dkjflkjksdjfsjldfjkldjfjlksdf</td>
+										<td>Soltero(a)</td>
+										<td>Universitario</td>
+									</tr>
+																</tbody>
+							</table>
+					</div>
+				</div>
+								<div id="seccion3" class="card my-2">
+
+						<div class="card-header">
+							Usuarios registrados
+						</div>
+						<div class="card-body">
+								<table id="usuarios" class="table table-striped table-bordered table-sm w-100">
+									<thead>
+										<th>Cédula del usuario</th>
+										<th>Nombres</th>
+										<th>Apellidos</th>
+										<th>Privilegios</th>
+										<th>Acciones</th>
+									</thead>
+									<tbody>
+																				<tr>
+											<td>V28636530</td>
+											<td>María Gabriela</td>
+											<td>Ballestero Rodríguez</td>
+											<td>Administrador</td>
+											<td>
+																								<button class="btn btn-sm btn-danger disabled" type="button" title="No se pueden eliminar Administradores" disabled style="cursor:no-drop;">Eliminar Usuario <i class="fa-solid fa-user-minus fa-lg ms-2"></i></button>
+																							</td>
+										</tr>
+																				<tr>
+											<td>V27919566</td>
+											<td>Elber Alonso</td>
+											<td>Rondón Hernández</td>
+											<td>Usuario</td>
+											<td>
+																								<form action="../controladores/control-usuarios.php" method="post">
+													<input type="hidden" name="idUsuario" value="V27919566">
+													<button class="btn btn-sm btn-danger" type="sumbit" name="orden" value="Eliminar" onclick="return confirmacion();">Eliminar Usuario <i class="fa-solid fa-user-minus fa-lg ms-2"></i></button>
+												</form>
+																							</td>
+										</tr>
+																				<tr>
+											<td>E14635135</td>
+											<td>Carlos Enrique</td>
+											<td>Goméz Lopez</td>
+											<td>Usuario</td>
+											<td>
+																								<form action="../controladores/control-usuarios.php" method="post">
+													<input type="hidden" name="idUsuario" value="E14635135">
+													<button class="btn btn-sm btn-danger" type="sumbit" name="orden" value="Eliminar" onclick="return confirmacion();">Eliminar Usuario <i class="fa-solid fa-user-minus fa-lg ms-2"></i></button>
+												</form>
+																							</td>
+										</tr>
+																				<tr>
+											<td>V17341885</td>
+											<td>María Elena</td>
+											<td>González González</td>
+											<td>Administrador</td>
+											<td>
+																								<button class="btn btn-sm btn-danger disabled" type="button" title="No se pueden eliminar Administradores" disabled style="cursor:no-drop;">Eliminar Usuario <i class="fa-solid fa-user-minus fa-lg ms-2"></i></button>
+																							</td>
+										</tr>
+																				<tr>
+											<td>E12345678</td>
+											<td>Elsbeth Tressa</td>
+											<td>Housaman Kleiner</td>
+											<td>Usuario</td>
+											<td>
+																								<form action="../controladores/control-usuarios.php" method="post">
+													<input type="hidden" name="idUsuario" value="E12345678">
+													<button class="btn btn-sm btn-danger" type="sumbit" name="orden" value="Eliminar" onclick="return confirmacion();">Eliminar Usuario <i class="fa-solid fa-user-minus fa-lg ms-2"></i></button>
+												</form>
+																							</td>
+										</tr>
+																			</tbody>
+								</table>
+						</div>
+					</div>
+				<div id="seccion4" class="card my-2">
+						<div class="card-header">
+							Registro de bitácora
+						</div>
+						<div class="card-body">
+								<table id="bitácora" class="table table-striped table-bordered table-sm w-100">
+									<thead>
+										<th>Nro. Registro</th>
+										<th>Id de usuario</th>
+										<th>Fecha entrada</th>
+										<th>Hora entrada</th>
+										<th>Acciones realizadas</th>
+										<th>Fecha de cierre</th>
+										<th>Hora de cierre</th>
+									</thead>
+									<tbody>
+																																																	<tr>
+												<td>104</td>
+												<td>1</td>
+												<td>2022-07-29</td>
+												<td>10:39:53</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>103</td>
+												<td>1</td>
+												<td>2022-07-26</td>
+												<td>01:03:46</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>102</td>
+												<td>1</td>
+												<td>2022-07-21</td>
+												<td>23:40:02</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>101</td>
+												<td>14</td>
+												<td>2022-07-19</td>
+												<td>22:26:37</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Visita menú principal,Registra un estudiante, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal,Registra un estudiante, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>100</td>
+												<td>14</td>
+												<td>2022-07-16</td>
+												<td>00:31:56</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>99</td>
+												<td>14</td>
+												<td>2022-07-14</td>
+												<td>12:43:05</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>98</td>
+												<td>1</td>
+												<td>2022-06-22</td>
+												<td>22:03:38</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>97</td>
+												<td>1</td>
+												<td>2022-05-21</td>
+												<td>11:05:42</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>96</td>
+												<td>1</td>
+												<td>2022-05-19</td>
+												<td>18:26:49</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>95</td>
+												<td>1</td>
+												<td>2022-05-19</td>
+												<td>16:51:01</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>94</td>
+												<td>1</td>
+												<td>2022-05-18</td>
+												<td>22:27:13</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes,Registra un estudiante, Consulta estudiantes,Registra un estudiante, Consulta estudiantes, Consulta estudiantes,Registra un estudiante, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>93</td>
+												<td>1</td>
+												<td>2022-05-17</td>
+												<td>18:36:32</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>92</td>
+												<td>1</td>
+												<td>2022-05-17</td>
+												<td>17:35:29</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>91</td>
+												<td>1</td>
+												<td>2022-05-16</td>
+												<td>22:19:35</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>90</td>
+												<td>1</td>
+												<td>2022-05-16</td>
+												<td>19:48:27</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>89</td>
+												<td>1</td>
+												<td>2022-05-16</td>
+												<td>15:40:40</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>88</td>
+												<td>1</td>
+												<td>2022-05-16</td>
+												<td>07:42:20</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>87</td>
+												<td>1</td>
+												<td>2022-05-15</td>
+												<td>23:45:41</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>86</td>
+												<td>1</td>
+												<td>2022-05-15</td>
+												<td>19:19:11</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>85</td>
+												<td>1</td>
+												<td>2022-05-15</td>
+												<td>18:53:17</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>84</td>
+												<td>1</td>
+												<td>2022-05-15</td>
+												<td>05:17:17</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>83</td>
+												<td>1</td>
+												<td>2022-05-11</td>
+												<td>08:37:37</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>82</td>
+												<td>14</td>
+												<td>2022-05-11</td>
+												<td>03:00:11</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>81</td>
+												<td>15</td>
+												<td>2022-05-11</td>
+												<td>02:59:23</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Cierra Sesión.</small></td>
+												<td>2022-05-11</td>
+												<td>02:59:32</td>
+											</tr>
+																																								<tr>
+												<td>80</td>
+												<td>1</td>
+												<td>2022-05-10</td>
+												<td>21:50:57</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Visita menú principal, Cierra Sesión.</small></td>
+												<td>2022-05-11</td>
+												<td>02:49:19</td>
+											</tr>
+																																								<tr>
+												<td>79</td>
+												<td>1</td>
+												<td>2022-05-10</td>
+												<td>21:43:07</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita perfil, Visita menú principal, Visita perfil, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>78</td>
+												<td>1</td>
+												<td>2022-05-10</td>
+												<td>19:02:27</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>77</td>
+												<td>1</td>
+												<td>2022-05-10</td>
+												<td>08:36:48</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>76</td>
+												<td>1</td>
+												<td>2022-05-09</td>
+												<td>13:03:38</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita menú principal, Cierra Sesión.</small></td>
+												<td>2022-05-10</td>
+												<td>08:36:42</td>
+											</tr>
+																																								<tr>
+												<td>75</td>
+												<td>1</td>
+												<td>2022-05-09</td>
+												<td>12:40:06</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>74</td>
+												<td>1</td>
+												<td>2022-05-08</td>
+												<td>19:47:13</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>73</td>
+												<td>1</td>
+												<td>2022-05-08</td>
+												<td>02:43:40</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra Sesión.</small></td>
+												<td>2022-05-08</td>
+												<td>02:46:55</td>
+											</tr>
+																																								<tr>
+												<td>72</td>
+												<td>1</td>
+												<td>2022-05-08</td>
+												<td>02:00:31</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Cierra Sesión.</small></td>
+												<td>2022-05-08</td>
+												<td>02:43:35</td>
+											</tr>
+																																								<tr>
+												<td>71</td>
+												<td>1</td>
+												<td>2022-05-08</td>
+												<td>01:59:41</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-08</td>
+												<td>02:00:26</td>
+											</tr>
+																																								<tr>
+												<td>70</td>
+												<td>1</td>
+												<td>2022-05-08</td>
+												<td>01:08:34</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>69</td>
+												<td>1</td>
+												<td>2022-05-07</td>
+												<td>17:50:54</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>68</td>
+												<td>1</td>
+												<td>2022-05-06</td>
+												<td>21:57:30</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Elimina un usuario, Elimina un usuario, Elimina un usuario, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>67</td>
+												<td>2</td>
+												<td>2022-05-06</td>
+												<td>20:47:35</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-06</td>
+												<td>21:57:21</td>
+											</tr>
+																																								<tr>
+												<td>66</td>
+												<td>1</td>
+												<td>2022-05-06</td>
+												<td>05:53:57</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>65</td>
+												<td>13</td>
+												<td>2022-05-05</td>
+												<td>18:52:19</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>64</td>
+												<td>13</td>
+												<td>2022-05-05</td>
+												<td>18:30:54</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-05</td>
+												<td>18:50:07</td>
+											</tr>
+																																								<tr>
+												<td>63</td>
+												<td>1</td>
+												<td>2022-05-05</td>
+												<td>08:43:16</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>62</td>
+												<td>12</td>
+												<td>2022-05-05</td>
+												<td>08:38:20</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita perfil, Visita menú principal, Visita perfil,Se da de baja, Visita perfil, Visita perfil,Se da de baja, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita perfil,Se da de baja,Se da de baja, Cierra sesión.</small></td>
+												<td>2022-05-05</td>
+												<td>08:43:06</td>
+											</tr>
+																																								<tr>
+												<td>61</td>
+												<td>1</td>
+												<td>2022-05-05</td>
+												<td>07:31:24</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-05</td>
+												<td>08:37:41</td>
+											</tr>
+																																								<tr>
+												<td>60</td>
+												<td>1</td>
+												<td>2022-05-04</td>
+												<td>15:46:06</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>59</td>
+												<td>2</td>
+												<td>2022-05-04</td>
+												<td>08:57:23</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>58</td>
+												<td>1</td>
+												<td>2022-05-04</td>
+												<td>07:10:27</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>57</td>
+												<td>1</td>
+												<td>2022-05-04</td>
+												<td>01:34:55</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>56</td>
+												<td>2</td>
+												<td>2022-05-04</td>
+												<td>01:20:06</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-04</td>
+												<td>01:34:51</td>
+											</tr>
+																																								<tr>
+												<td>55</td>
+												<td>1</td>
+												<td>2022-05-03</td>
+												<td>22:50:37</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-08</td>
+												<td>00:59:26</td>
+											</tr>
+																																								<tr>
+												<td>54</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>22:46:48</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil,Se da de baja, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:47:01</td>
+											</tr>
+																																								<tr>
+												<td>53</td>
+												<td>2</td>
+												<td>2022-05-03</td>
+												<td>22:23:41</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:46:27</td>
+											</tr>
+																																								<tr>
+												<td>52</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>22:23:20</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:23:30</td>
+											</tr>
+																																								<tr>
+												<td>51</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>22:22:44</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:22:52</td>
+											</tr>
+																																								<tr>
+												<td>50</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>22:17:54</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:22:30</td>
+											</tr>
+																																								<tr>
+												<td>49</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>22:17:32</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:17:35</td>
+											</tr>
+																																								<tr>
+												<td>48</td>
+												<td>2</td>
+												<td>2022-05-03</td>
+												<td>22:17:23</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:17:26</td>
+											</tr>
+																																								<tr>
+												<td>47</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>16:43:16</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>22:04:02</td>
+											</tr>
+																																								<tr>
+												<td>46</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>16:28:32</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>45</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>16:24:51</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>44</td>
+												<td>2</td>
+												<td>2022-05-03</td>
+												<td>15:13:04</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>15:43:35</td>
+											</tr>
+																																								<tr>
+												<td>43</td>
+												<td>5</td>
+												<td>2022-05-03</td>
+												<td>15:06:29</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita perfil,Se da de baja, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>15:11:16</td>
+											</tr>
+																																								<tr>
+												<td>42</td>
+												<td>2</td>
+												<td>2022-05-03</td>
+												<td>15:03:42</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>15:06:12</td>
+											</tr>
+																																								<tr>
+												<td>41</td>
+												<td>2</td>
+												<td>2022-05-03</td>
+												<td>14:58:46</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>15:03:36</td>
+											</tr>
+																																								<tr>
+												<td>40</td>
+												<td>5</td>
+												<td>2022-05-03</td>
+												<td>14:06:39</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>14:58:41</td>
+											</tr>
+																																								<tr>
+												<td>39</td>
+												<td>2</td>
+												<td>2022-05-03</td>
+												<td>13:48:26</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>14:06:22</td>
+											</tr>
+																																								<tr>
+												<td>38</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>13:03:19</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>37</td>
+												<td>4</td>
+												<td>2022-05-03</td>
+												<td>12:02:53</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-03</td>
+												<td>12:14:09</td>
+											</tr>
+																																								<tr>
+												<td>36</td>
+												<td>2</td>
+												<td>2022-05-03</td>
+												<td>11:56:17</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>35</td>
+												<td>4</td>
+												<td>2022-05-02</td>
+												<td>16:14:55</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-04</td>
+												<td>01:20:02</td>
+											</tr>
+																																								<tr>
+												<td>34</td>
+												<td>4</td>
+												<td>2022-05-02</td>
+												<td>13:56:51</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>33</td>
+												<td>4</td>
+												<td>2022-05-02</td>
+												<td>06:50:22</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita menú principal, Visita perfil, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>32</td>
+												<td>12</td>
+												<td>2022-05-02</td>
+												<td>05:25:21</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-02</td>
+												<td>06:50:03</td>
+											</tr>
+																																								<tr>
+												<td>31</td>
+												<td>2</td>
+												<td>2022-05-02</td>
+												<td>04:42:32</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-02</td>
+												<td>05:24:55</td>
+											</tr>
+																																								<tr>
+												<td>30</td>
+												<td>12</td>
+												<td>2022-05-02</td>
+												<td>04:40:10</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>29</td>
+												<td>2</td>
+												<td>2022-05-02</td>
+												<td>04:34:31</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-02</td>
+												<td>16:14:13</td>
+											</tr>
+																																								<tr>
+												<td>28</td>
+												<td>11</td>
+												<td>2022-05-02</td>
+												<td>01:42:01</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>27</td>
+												<td>4</td>
+												<td>2022-05-01</td>
+												<td>19:44:49</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-02</td>
+												<td>04:33:24</td>
+											</tr>
+																																								<tr>
+												<td>26</td>
+												<td>4</td>
+												<td>2022-05-01</td>
+												<td>15:18:15</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>25</td>
+												<td>2</td>
+												<td>2022-05-01</td>
+												<td>13:32:14</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita menú principal, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-01</td>
+												<td>15:18:11</td>
+											</tr>
+																																								<tr>
+												<td>24</td>
+												<td>4</td>
+												<td>2022-05-01</td>
+												<td>05:09:28</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>23</td>
+												<td>4</td>
+												<td>2022-05-01</td>
+												<td>02:48:29</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-01</td>
+												<td>05:09:23</td>
+											</tr>
+																																								<tr>
+												<td>22</td>
+												<td>2</td>
+												<td>2022-05-01</td>
+												<td>02:38:49</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-01</td>
+												<td>02:48:25</td>
+											</tr>
+																																								<tr>
+												<td>21</td>
+												<td>4</td>
+												<td>2022-05-01</td>
+												<td>01:50:47</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>20</td>
+												<td>2</td>
+												<td>2022-04-30</td>
+												<td>23:27:04</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-05-01</td>
+												<td>01:50:43</td>
+											</tr>
+																																								<tr>
+												<td>19</td>
+												<td>2</td>
+												<td>2022-04-30</td>
+												<td>21:33:26</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-04-30</td>
+												<td>22:35:59</td>
+											</tr>
+																																								<tr>
+												<td>18</td>
+												<td>2</td>
+												<td>2022-04-30</td>
+												<td>21:27:17</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-04-30</td>
+												<td>21:33:23</td>
+											</tr>
+																																								<tr>
+												<td>17</td>
+												<td>2</td>
+												<td>2022-04-30</td>
+												<td>21:26:49</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>16</td>
+												<td>11</td>
+												<td>2022-04-30</td>
+												<td>21:26:16</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>15</td>
+												<td>11</td>
+												<td>2022-04-30</td>
+												<td>15:52:50</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-04-30</td>
+												<td>16:04:32</td>
+											</tr>
+																																								<tr>
+												<td>14</td>
+												<td>2</td>
+												<td>2022-04-30</td>
+												<td>15:52:39</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>13</td>
+												<td>2</td>
+												<td>2022-04-30</td>
+												<td>15:27:52</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>12</td>
+												<td>11</td>
+												<td>2022-04-30</td>
+												<td>14:57:22</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Edita perfil, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita menú principal, Visita perfil, Visita perfil, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Edita perfil, Edita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>11</td>
+												<td>11</td>
+												<td>2022-04-30</td>
+												<td>14:51:41</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita perfil, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-04-30</td>
+												<td>14:57:15</td>
+											</tr>
+																																								<tr>
+												<td>10</td>
+												<td>2</td>
+												<td>2022-04-30</td>
+												<td>13:41:12</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-04-30</td>
+												<td>13:42:21</td>
+											</tr>
+																																								<tr>
+												<td>9</td>
+												<td>2</td>
+												<td>2022-04-28</td>
+												<td>22:22:54</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>8</td>
+												<td>4</td>
+												<td>2022-04-26</td>
+												<td>09:08:59</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>7</td>
+												<td>2</td>
+												<td>2022-04-26</td>
+												<td>04:34:59</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Visita menú principal, Consulta estudiantes, Consulta estudiantes, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-04-26</td>
+												<td>09:08:52</td>
+											</tr>
+																																								<tr>
+												<td>6</td>
+												<td>2</td>
+												<td>2022-04-26</td>
+												<td>04:26:27</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión, Visita menú principal, Consulta estudiantes, Visita menú principal, Visita menú principal, Cierra sesión.</small></td>
+												<td>2022-04-26</td>
+												<td>04:34:54</td>
+											</tr>
+																																								<tr>
+												<td>5</td>
+												<td>4</td>
+												<td>2022-04-26</td>
+												<td>02:19:36</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión,Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>4</td>
+												<td>2</td>
+												<td>2022-04-26</td>
+												<td>02:18:26</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión,Visita menú principal</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>3</td>
+												<td>2</td>
+												<td>2022-04-26</td>
+												<td>01:52:40</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Inicia Sesión,Visita menú principal,Visita menú principal,Visita menú principal,Visita menú principal,Visita menú principal,Visita menú principal,Visita menú principal,Visita perfil,Visita perfil,Visita perfil</small></td>
+												<td>Sesión no cerrada correctamente</td>
+												<td>Sesión no cerrada correctamente</td>
+											</tr>
+																																								<tr>
+												<td>2</td>
+												<td>2</td>
+												<td>2022-04-26</td>
+												<td>01:51:36</td>
+												<td style="min-width:400px; max-width: 800px;"><small>/proyecto_pst/controladores/login.php</small></td>
+												<td>0000-00-00</td>
+												<td>00:00:00</td>
+											</tr>
+																																								<tr>
+												<td>1</td>
+												<td>2</td>
+												<td>2022-04-22</td>
+												<td>17:34:06</td>
+												<td style="min-width:400px; max-width: 800px;"><small>Muchos,ajshdvjasgdvjashdvjh</small></td>
+												<td>2022-04-22</td>
+												<td>19:34:06</td>
+											</tr>
+																												</tbody>
+								</table>
+						</div>
+					</div>
+							</section>
+		</div>
+
+		<div class="card text-center" style="width: 100%; margin-top: 20px;">
+			<a class="btn btn-primary" href="index.php">Volver al menú</a>
+		</div>
+	</div>
+	<!--Footer-->
+	<footer class="w-100 bg-secondary d-flex justify-content-center text-center p-2 position-fixed bottom-0">
+		<span class="text-white">Sistema de inscripción L.B. G.P.F - 2022</span>
+	</footer>
+	<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary position-fixed bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" title="Ayuda">
+  <i class="fas fa-question-circle fa-lg"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"><i class="fas fa-question-circle fa-xl"></i> Ayuda</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+				<p>Bienvenido(a) a la sección de ayuda, ¿Qué desea consultar?.</p>
+				<div class="accordion mb-4" id="accordionExample">
+				  <div class="accordion-item">
+				    <h2 class="accordion-header" id="headingLogin">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLogin" aria-expanded="false" aria-controls="collapseLogin">
+				       <i class="fas fa-key fa-lg me-2"></i> Iniciar Sesión
+				      </button>
+				    </h2>
+				    <div id="collapseLogin" class="accordion-collapse collapse" aria-labelledby="headingLogin" data-bs-parent="#accordionExample">
+				      <div class="accordion-body">
+				        <strong>Iniciar Sesión.</strong> Si eres un usuario ya registrado solo debes ingresar tu número de cédula, la clave que hayas colocado al momento del registro y hacer click en el botón "Ingresar". Por otro lado si eres un nuevo usuario debes hacer click en el botón "Registrarse", al hacerlo será enviado a una página donde debe llenar los datos solicicitados en cada pestaña, al completarlos debe hacer click al botón "Guardar y Continuar" de ahí será dirigido a la página para Ingresar al Sistema nuevamente donde podrá ingresar con sus datos.
+				      </div>
+				    </div>
+				  </div>
+				  <div class="accordion-item">
+				    <h2 class="accordion-header" id="headingTwo">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				        <i class="fa-solid fa-user-plus fa-lg me-2"></i> Registrar estudiante
+				      </button>
+				    </h2>
+				    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+				      <div class="accordion-body">
+				        <strong>Registrar Estudiante.</strong> Para poder registrar un estudiante primero debe hacer click en el botón "Registrar Estudiante" de ahí será llevado al formulario donde primero deberá escoger su vínculo con el estudiante a inscribir, continuamente debe llenar todos los datos solicitados sobre el estudiante. Al finalizar haga click en el botón "Registrar Estudiante" y tendrá ya registrado a un estudiante. Importante recordar que debe ingresar todos los datos solicitados.
+				      </div>
+				    </div>
+				  </div>
+				  <div class="accordion-item">
+				    <h2 class="accordion-header" id="headingProfile">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProfile" aria-expanded="false" aria-controls="collapseProfile">
+				        <i class="fa-solid fa-address-card fa-lg me-2"></i>Ver Perfil
+				      </button>
+				    </h2>
+				    <div id="collapseProfile" class="accordion-collapse collapse" aria-labelledby="headingProfile" data-bs-parent="#accordionExample">
+				      <div class="accordion-body">
+				        <strong>Ver Perfil.</strong> Esta sección le permite al usuario del sistema visualizar los datos de su perfil de usuario. Asímismo en esta sección se encuentra el botón "Editar perfil" el cual le da la opción de modificar los datos en su perfil.
+				      </div>
+				    </div>
+				  </div>
+				  <div class="accordion-item">
+				    <h2 class="accordion-header" id="headingThree">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				        <i class="fa-solid fa-magnifying-glass fa-lg me-2"></i>Gestionar estudiante
+				      </button>
+				    </h2>
+				    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+				      <div class="accordion-body">
+				        <strong>Gestionar Estudiante.</strong> La sección de gestionar estudiantes le permitirá consultar a los estudiantes que ha registrado bajo su usuario.
+				      </div>
+						</div>
+				  </div>
+				  <div class="accordion-item">
+				    <h2 class="accordion-header" id="headingRegistry">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRegistry" aria-expanded="false" aria-controls="collapseRegistry">
+				        <i class="fa-solid fa-magnifying-glass fa-lg me-2"></i>Gestionar Registros
+				      </button>
+				    </h2>
+				    <div id="collapseRegistry" class="accordion-collapse collapse" aria-labelledby="headingRegistry" data-bs-parent="#accordionExample">
+				      <div class="accordion-body">
+				        <strong>Gestionar Registros.</strong> Esta sección le permite al administrador consultar todos los registros en la base de datos.
+				      </div>
+				    </div>
+				  </div>
+				  <div class="accordion-item">
+				    <h2 class="accordion-header" id="headingMaintenance">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMaintenance" aria-expanded="false" aria-controls="collapseMaintenance">
+				        <i class="fa-solid fa-database fa-lg me-2"></i>Funciones de mantenimiento
+				      </button>
+				    </h2>
+				    <div id="collapseMaintenance" class="accordion-collapse collapse" aria-labelledby="headingMaintenance" data-bs-parent="#accordionExample">
+				      <div class="accordion-body">
+				        <strong>Funciones de mantenimiento.</strong> Las funciones de mantenimiento son exclusivas de los administradores del sistema. Estas son "Generar respaldo" y "Restaurar base de datos". La opción "Generar respaldo" le permite descargar un repaldo de todos los registros que se encuentran en la base de datos. por otro lado la opción "Restaurar base de datos" le permite restaurar la base de datos a un punto anterior.
+				      </div>
+						</div>
+				  </div>
+				</div>
+        <a href="/proyecto_pst/docs/Manual de usuario.pdf" target="_blank"><i class="fas fa-download fa-lg me-2"></i>Descargar manual de usuario</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../js/datatables.min.js"></script>
+<script type="text/javascript" src="../js/pdfmake.min.js"></script>
+<script type="text/javascript" src="../js/vfs_fonts.js"></script>
+<script type="text/javascript" src="../js/sweetalert2.js"></script>
+<script type="text/javascript" src="../js/datatables1.min.js"></script>
+<script type="text/javascript">
+	//Datatables estudiantes
+	$(document).ready( function () {
+		$('#estudiantes').DataTable({
+			responsive: true,
+			"language": {
+					"url": "../js/datatables-español.json"
+			  },
+	  				dom: 'Bfrtip',
+			buttons: [
+				{
+	            extend: 'excelHtml5',
+	            text: 'Generar reporte en Excel <i class="fa-solid fa-file-excel fa-lg ms-2"></i>',
+	            autoFilter: true,
+	            filename: 'Reporte de estudiantes',
+	            sheetName: 'Reporte de estudiantes',
+	            className: 'btn btn-success',
+	            messageTop: 'Reporte de estudiantes'
+	        	}
+		  	],
+		  	"pagingType": "numbers"
+	  			});
+	} );
+	//Datatables representantes
+	$(document).ready( function () {
+		$('#representantes').DataTable({
+			responsive: true,
+			"language": {
+					"url": "../js/datatables-español.json"
+			  },
+						dom: 'Bfrtip',
+			buttons: [
+				{
+	            extend: 'excelHtml5',
+	            text: 'Generar reporte en Excel <i class="fa-solid fa-file-excel fa-lg ms-2"></i>',
+	            autoFilter: true,
+	            filename: 'Reporte de representantes',
+	            sheetName: 'Reporte de representantes',
+	            className: 'btn btn-success',
+	            messageTop: 'Reporte de representantes'
+	        }
+		  	]
+						});
+	} );
+		//Datatables usuarios
+	$(document).ready( function () {
+		$('#usuarios').DataTable({
+			responsive: true,
+			"language": {
+					"url": "../js/datatables-español.json"
+			  },
+			dom: 'Bfrtip',
+			buttons: [
+				{
+	            extend: 'excelHtml5',
+	            text: 'Generar reporte en Excel <i class="fa-solid fa-file-excel fa-lg ms-2"></i>',
+	            autoFilter: true,
+	            filename: 'Reporte de usuarios',
+	            sheetName: 'Reporte de usuarios',
+	            className: 'btn btn-success',
+	            messageTop: 'Reporte de usuarios'
+	        	}
+		  	],
+		  	"pagingType": "numbers"
+
+		});
+	} );
+
+	//Datatables bitácora
+	$(document).ready( function () {
+		$('#bitácora').DataTable({
+			responsive: true,
+			"language": {
+					"url": "../js/datatables-español.json"
+			  },
+			dom: 'Bfrtip',
+			"order": [[ 0, "desc" ]],
+			buttons: [
+				{
+	            extend: 'excelHtml5',
+	            text: 'Generar reporte en Excel <i class="fa-solid fa-file-excel fa-lg ms-2"></i>',
+	            autoFilter: true,
+	            filename: 'Reporte de bitácora',
+	            sheetName: 'Reporte de bitácora',
+	            className: 'btn btn-success',
+	            messageTop: 'Reporte de bitácora'
+	        }
+		  	]
+		});
+	} );
+	</script>
+<script type="text/javascript">
+	function confirmacion() {
+		//Pregunta si desea realizar la acción la cancela si selecciona NO
+    if(confirm("¿Desea realizar esta accion?")) {
+			alert("Acción ejecutada");
+			return true;
+		}
+		else {
+			alert("Acción cancelada");
+			return false;
+		}
+	}
+	//secciones
+	var a = document.getElementById("seccion1");
+
+	var b = document.getElementById("seccion2");
+				var c = document.getElementById("seccion3");
+		var d = document.getElementById("seccion4");
+			a.style.display = "block";
+
+	b.style.display = "block";
+				c.style.display = "block";
+		d.style.display = "block";
+		
+	setTimeout(function(){
+
+		b.style.display = "none";
+						c.style.display = "none";
+			d.style.display = "none";
+				}, 2000);
+
+	function seccion(seccion) {
+
+		//secciones
+		var a = document.getElementById("seccion1");
+		var b = document.getElementById("seccion2");
+
+				var c = document.getElementById("seccion3");
+		var d = document.getElementById("seccion4");
+		
+		//botones en la navegación
+		var link_a = document.getElementById("link1");
+		var link_b = document.getElementById("link2");
+
+				var link_c = document.getElementById("link3");
+		var link_d = document.getElementById("link4");
+		
+		//seccion seleccionada como activa(seccion 1 por defecto)
+		var seccion = document.getElementById(seccion);
+
+		a.style.display = "none";
+		b.style.display = "none";
+
+				c.style.display = "none";
+		d.style.display = "none";
+		
+		link_a.classList.remove("active");
+		link_b.classList.remove("active");
+
+				link_c.classList.remove("active");
+		link_d.classList.remove("active");
+		
+		if (seccion == a) {
+			a.style.display = "block";
+			link_a.classList.add("active");
+		}
+		else if (seccion == b) {
+			b.style.display = "block";
+			link_b.classList.add("active");
+		}
+				else if (seccion == c) {
+			c.style.display = "block";
+			link_c.classList.add("active");
+		}
+		else if (seccion == d) {
+			d.style.display = "block";
+			link_d.classList.add("active");
+		}
+			}
+</script>
+</body>
+</html>
